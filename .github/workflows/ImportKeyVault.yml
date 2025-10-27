@@ -1,0 +1,41 @@
+name: Terraform Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Hent secrets fra Key Vault
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          echo "RESOURCE_GROUP=$(az keyvault secret show --vault-name kvpp001 --name dev-resourcegroupname --query value -o tsv)" >> $GITHUB_ENV
+          echo "STORAGE_ACCOUNT=$(az keyvault secret show --vault-name kvpp001 --name dev-storageaccountname --query value -o tsv)" >> $GITHUB_ENV
+          echo "LOCATION=$(az keyvault secret show --vault-name kvpp001 --name dev-location --query value -o tsv)" >> $GITHUB_ENV
+          echo "ENVIRONMENT=$(az keyvault secret show --vault-name kvpp001 --name dev-environment --query value -o tsv)" >> $GITHUB_ENV
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+    
+    - name: Terraform Init
+      run: terraform init
+    
+    - name: Terraform Apply
+      run: |
+        terraform apply -auto-approve \
+          -var="resource_group_name=${{ env.RESOURCE_GROUP }}" \
+          -var="storage_account_name=${{ env.STORAGE_ACCOUNT }}" \
+          -var="location=${{ env.LOCATION }}" \
+          -var="environment=${{ env.ENVIRONMENT }}"
+
