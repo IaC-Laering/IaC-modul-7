@@ -20,9 +20,18 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          echo "RESOURCE_GROUP=$(az keyvault secret show --vault-name kvpp001 --name terraform-resource-group-name --query value -o tsv)" >> $GITHUB_ENV
-          echo "LOCATION=$(az keyvault secret show --vault-name kvpp001 --name terraform-location --query value -o tsv)" >> $GITHUB_ENV
-          echo "APP_NAME=$(az keyvault secret show --vault-name kvpp001 --name terraform-app-service-name --query value -o tsv)" >> $GITHUB_ENV
+          echo "RESOURCE_GROUP_TEST=$(az keyvault secret show --vault-name kvpp001 --name test-resourcegroupname --query value -o tsv)" >> $GITHUB_ENV
+          echo "STORAGE_ACCOUNT_TEST=$(az keyvault secret show --vault-name kvpp001 --name test-storageaccountname --query value -o tsv)" >> $GITHUB_ENV
+          echo "LOCATION_TEST=$(az keyvault secret show --vault-name kvpp001 --name test-location --query value -o tsv)" >> $GITHUB_ENV
+          echo "ENVIRONMENT_TEST=$(az keyvault secret show --vault-name kvpp001 --name test-environment --query value -o tsv)" >> $GITHUB_ENV
+          echo "RESOURCE_GROUP_DEV=$(az keyvault secret show --vault-name kvpp001 --name dev-resourcegroupname --query value -o tsv)" >> $GITHUB_ENV
+          echo "STORAGE_ACCOUNT_DEV=$(az keyvault secret show --vault-name kvpp001 --name dev-storageaccountname --query value -o tsv)" >> $GITHUB_ENV
+          echo "LOCATION_DEV=$(az keyvault secret show --vault-name kvpp001 --name dev-location --query value -o tsv)" >> $GITHUB_ENV
+          echo "ENVIRONMENT_DEV=$(az keyvault secret show --vault-name kvpp001 --name dev-environment --query value -o tsv)" >> $GITHUB_ENV
+          echo "RESOURCE_GROUP_PROD=$(az keyvault secret show --vault-name kvpp001 --name prod-resourcegroupname --query value -o tsv)" >> $GITHUB_ENV
+          echo "STORAGE_ACCOUNT_PROD=$(az keyvault secret show --vault-name kvpp001 --name prod-storageaccountname --query value -o tsv)" >> $GITHUB_ENV
+          echo "LOCATION_PROD=$(az keyvault secret show --vault-name kvpp001 --name prod-location --query value -o tsv)" >> $GITHUB_ENV
+          echo "ENVIRONMENT_PROD=$(az keyvault secret show --vault-name kvpp001 --name prod-environment --query value -o tsv)" >> $GITHUB_ENV
     
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
