@@ -1,4 +1,4 @@
-name: terraform-rg-kv
+name: terraform-rg-kv-dev
 
 on:
   workflow_dispatch: {}  # manuell trigger i starten
