@@ -54,6 +54,14 @@ jobs:
             echo "TF_VAR_environment=$ENVIRONMENT"
           } >> "$GITHUB_ENV"
 
+      - name: Debug working directory
+        run: |
+          echo "Current directory:"
+          pwd
+          echo
+          echo "Files in repo:"
+          ls -R
+      
       - name: Terraform Init
         working-directory: ${{ env.WORKDIR }}
         run: terraform init -input=false
