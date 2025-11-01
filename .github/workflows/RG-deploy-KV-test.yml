@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     env:
-      WORKDIR: rg
+      WORKDIR: ./rg
     steps:
       - name: Checkout
         uses: actions/checkout@v4
