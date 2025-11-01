@@ -12,16 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      WORKDIR: ${{ github.workspace }}/rg
+      WORKDIR: rg
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Show current directory and files
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "List all files:"
-          find . -type f
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
@@ -61,14 +55,14 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Terraform Init
-        working-directory: ${{ github.workspace }}/rg
+        working-directory: rg
         run: terraform init -input=false
 
       - name: Terraform Plan
-        working-directory: ${{ github.workspace }}/rg
+        working-directory: rg
         run: terraform plan -input=false
 
       - name: Terraform Apply (only on main)
         if: github.ref == 'refs/heads/main'
-        working-directory: ${{ github.workspace }}/rg
+        working-directory: rg
         run: terraform apply -auto-approve -input=false
