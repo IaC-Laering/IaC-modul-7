@@ -38,6 +38,12 @@ jobs:
             echo "ARM_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}"
           } >> "$GITHUB_ENV"
 
+      - name: Show current directory and files
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "List all files:"
+          find . -type f
+
       - name: Load vars from Key Vault → TF_VAR_*
         env:
           KV: ${{ secrets.KEYVAULT_NAME }}
