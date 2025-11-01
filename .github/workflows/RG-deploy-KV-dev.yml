@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      WORKDIR: ./rg  # <-- endre ved behov
+      WORKDIR: ${{ github.workspace }}/rg
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -55,14 +55,14 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Terraform Init
-        working-directory: ${{ env.WORKDIR }}
+        working-directory: ${{ github.workspace }}/rg
         run: terraform init -input=false
 
       - name: Terraform Plan
-        working-directory: ${{ env.WORKDIR }}
+        working-directory: ${{ github.workspace }}/rg
         run: terraform plan -input=false
 
       - name: Terraform Apply (only on main)
         if: github.ref == 'refs/heads/main'
-        working-directory: ${{ env.WORKDIR }}
+        working-directory: ${{ github.workspace }}/rg
         run: terraform apply -auto-approve -input=false
