@@ -65,7 +65,7 @@ jobs:
         run: |
           terraform init -input=false \
             -backend-config="${{ github.workspace }}/${{ env.BACKEND_HCL }}" \
-            -backend-config="key ="rg-pp.tfstate""
+            -backend-config="key="rg-pp.tfstate""
 
       - name: Terraform Validate
         working-directory: ${{ env.WORKDIR }}
