@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      WORKDIR: "rg"  # <-- endre ved behov
+      WORKDIR: ./rg  # <-- endre ved behov
     steps:
       - name: Checkout
         uses: actions/checkout@v4
