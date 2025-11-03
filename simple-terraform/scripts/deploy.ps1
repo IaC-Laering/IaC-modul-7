@@ -31,16 +31,17 @@ tar -xzf $Artifact -C $WORKSPACE
 Write-Host " Artifact extracted" -ForegroundColor Green
 Write-Host ""
 
+New-Item -Path "$WORKSPACE" -Name "terraform" -ItemType Directory | Out-Null
 Set-Location "$WORKSPACE/terraform"
 
 # Initialize with backend
 Write-Host "2 Initializing Terraform..." -ForegroundColor Yellow
-terraform init -backend-config="../backend-configs/backend-$Environment.tfvars"
+terraform init -backend-config="C:\Users\pprzy\Documents\GitHub\IaC-modul-7\simple-terraform/backend-configs/backend-${ENVIRONMENT}.tfvars"
 Write-Host ""
 
 # Plan
 Write-Host "3 Planning deployment..." -ForegroundColor Yellow
-terraform plan -var-file="../environments/$Environment.tfvars" -out=tfplan
+terraform plan -var-file="C:\Users\pprzy\Documents\GitHub\IaC-modul-7\simple-terraform/environments/$Environment.tfvars" -out=tfplan
 Write-Host ""
 
 # Apply

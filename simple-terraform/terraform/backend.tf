@@ -1,4 +1,4 @@
-﻿# Backend configuration provided via -backend-config flag
+# Backend configuration provided via -backend-config flag
 # This keeps the backend block flexible for different environments
 terraform {
   backend "azurerm" {
