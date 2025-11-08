@@ -1,13 +1,14 @@
 name: Terraform CD
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - prosjekt8
     paths:
       - "IaC-modul-7/Modul8/simple-terraform/**"
-
+      
 permissions:
   id-token: write
   contents: read
