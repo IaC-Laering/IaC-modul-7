@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "main" {
 
   tags = {
     Environment = var.environment
-    ManagedBy   = "Terraform"
+    ManagedBy   = "Paulina Przywuska"
     Project     = var.project_name
   }
 }
@@ -30,7 +30,7 @@ resource "azurerm_storage_account" "main" {
 
   tags = {
     Environment = var.environment
-    ManagedBy   = "Terraform"
+    ManagedBy   = "Paulina Przywuska"
   }
 }
 
