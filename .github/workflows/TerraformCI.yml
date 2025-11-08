@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: 
       - main
+      - prosjekt8
     paths:
       - "IaC-modul-7/Modul8/simple-terraform/**"
 
