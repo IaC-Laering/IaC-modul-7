@@ -7,7 +7,7 @@ on:
       - main
       - prosjekt8
     paths:
-      - "IaC-modul-7/Modul8/simple-terraform/**"
+      - "Modul8/simple-terraform/**"
 
 permissions:
   id-token: write
@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      WORKDIR: "IaC-modul-7/Modul8/simple-terraform"
-      BACKEND_HCL: "IaC-modul-7/Modul8/simple-terraform/backend/backend.hcl"
+      WORKDIR: "Modul8/simple-terraform"
+      BACKEND_HCL: "Modul8/simple-terraform/backend/backend.hcl"
       TF_INPUT: "false"
       TF_IN_AUTOMATION: "true"
       
@@ -77,8 +77,8 @@ jobs:
     needs: validate
     environment: ${{ matrix.environment }}
     env:
-      WORKDIR: "IaC-modul-7/Modul8/simple-terraform"
-      BACKEND_HCL: "IaC-modul-7/Modul8/simple-terraform/backend/backend.hcl"
+      WORKDIR: "Modul8/simple-terraform"
+      BACKEND_HCL: "Modul8/simple-terraform/backend/backend.hcl"
       TF_INPUT: "false"
       TF_IN_AUTOMATION: "true"
     
