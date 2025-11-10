@@ -61,7 +61,7 @@ jobs:
         id: init
         run: |
           terraform init \
-            -backend-config="${{ env.BACKEND_HCL }}" \
+            -backend-config="${{ github.workspace }}/Modul8/simple-terraform/backend/backend.hcl"
             -input=false \
             -no-color
       
@@ -115,8 +115,7 @@ jobs:
         working-directory: ${{ env.WORKDIR }}/terraform
         run: |
           terraform init \
-            -backend-config="${{ github.workspace }}/${{ env.BACKEND_HCL }}" \
-            -backend-config="key=projects/storageaccount/${{ matrix.environment }}/${{ matrix.environment }}.tfstate" \
+            -backend-config="${{ github.workspace }}/Modul8/simple-terraform/backend/backend.hcl"
             -input=false \
             -no-color
       
