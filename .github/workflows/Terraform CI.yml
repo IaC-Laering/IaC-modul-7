@@ -20,7 +20,7 @@ jobs:
     environment: dev
     env:
       WORKDIR: "Modul8/simple-terraform"
-      BACKEND_HCL: "Modul8/simple-terraform/backend/backend.hcl"
+      BACKEND_HCL: "backend/backend.hcl"
       TF_INPUT: "false"
       TF_IN_AUTOMATION: "true"
       
@@ -77,7 +77,7 @@ jobs:
     environment: ${{ matrix.environment }}
     env:
       WORKDIR: "Modul8/simple-terraform"
-      BACKEND_HCL: "Modul8/simple-terraform/backend/backend.hcl"
+      BACKEND_HCL: "backend/backend.hcl"
       TF_INPUT: "false"
       TF_IN_AUTOMATION: "true"
     
