@@ -61,7 +61,7 @@ jobs:
         id: init
         run: |
           terraform init \
-            -backend-config="${{ github.workspace }}/Modul8/simple-terraform/backend/backend.hcl"
+            -backend-config="${{ github.workspace }}/Modul8/simple-terraform/backend/backend.hcl" \
             -input=false \
             -no-color
       
@@ -115,7 +115,7 @@ jobs:
         working-directory: ${{ env.WORKDIR }}/terraform
         run: |
           terraform init \
-            -backend-config="${{ github.workspace }}/Modul8/simple-terraform/backend/backend.hcl"
+            -backend-config="${{ github.workspace }}/Modul8/simple-terraform/backend/backend.hcl" \
             -input=false \
             -no-color
       
