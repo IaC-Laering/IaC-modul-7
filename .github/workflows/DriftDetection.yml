@@ -19,6 +19,7 @@ jobs:
     # Environment variables required for authentication and configuration
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}  # Azure client ID from GitHub Secrets
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}  # Azure client secret from GitHub Secrets
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # Azure subscription ID from GitHub Secrets
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}  # Azure tenant ID from GitHub Secrets
       WORKING_DIR: Modul10/DriftDetection  # Directory where Terraform files are stored
